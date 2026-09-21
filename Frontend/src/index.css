@@ -5,6 +5,18 @@
   --color-secondary:#080062;
   --color-primary: #000114;
   --color-tx-darkgray: #424242;
-  --color-tx-lightgray: #838383;
+  --color-tx-lightgray: #b4b4b4;
   
+}
+@theme {
+  --animate-marquee: marquee 15s linear infinite;
+
+  @keyframes marquee {
+    from {
+      transform: translateX(70%);
+    }
+    to {
+      transform: translateX(-100%);
+    }
+  }
 }
