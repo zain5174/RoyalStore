@@ -1,48 +1,79 @@
-import userModel from "../models/user.model.js"
+import userModel from "../models/user.model.js";
+import bcrypt from "bcrypt";
 
-const createUser = async (req,res) => {
+// Create User
+const createUser = async (req, res) => {
   try {
-    const data = req.body
+    const { name, email, password } = req.body;
+
+    // Check existing user
+    const existingUser = await userModel.findOne({ email });
+
+    if (existingUser) {
+      console.log("duplciayed items");
+      return res.status(400).json({
+        success: false,
+        message: "User already exists",
+      });
+    }
+
+    // Hash password
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Create user
     await userModel.create({
-      name:data.name,
-      password:data.password,
-      email:data.email
-    })
-    res.status(201).json({
-      message:"user"
-    })
+      name,
+      email,
+      password: hashedPassword,
+    });
+
+    return res.status(201).json({
+      message: "User created successfully",
+    });
   } catch (error) {
-    res.status(500).json({
-      message:error.message
-    })
+    return res.status(500).json({
+      message: error.message,
+    });
   }
-}
-//get users
-const getusers = async(req,res) => {
+};
+
+// Get Users
+const getusers = async (req, res) => {
   try {
-  const users = await userModel.find()
-    res.status(200).json({
-      message:"users fatched",
-    allusers:users,
-    })
+    const users = await userModel.find();
+
+    return res.status(200).json({
+      message: "Users fetched successfully",
+      allusers: users,
+    });
   } catch (error) {
-    message:error.message
+    return res.status(500).json({
+      message: error.message,
+    });
   }
-}
-//delete users
-const deleteusers =async (req,res) => {
+};
+
+// Delete User
+const deleteusers = async (req, res) => {
   try {
-  const id = req.params.id
-    const user = await userModel.findOneAndDelete({
-      _id:id
-    })
-    res.status(201).json({
-      message:"user deleted successfuly"
-    })
+    const id = req.params.id;
+
+    const user = await userModel.findByIdAndDelete(id);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    return res.status(200).json({
+      message: "User deleted successfully",
+    });
   } catch (error) {
-    res.status(500).json({
-      message:error.message
-    })
+    return res.status(500).json({
+      message: error.message,
+    });
   }
-}
-export {createUser,getusers,deleteusers}
+};
+
+export { createUser, getusers, deleteusers };

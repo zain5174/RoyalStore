@@ -20,7 +20,7 @@ const Sidebar = ({ setSidebaropen }) => {
               to={`/products/${item.toLowerCase()}`}
               key={item}
               onClick={() => setSidebaropen(false)}
-              className="text-sm font-semibold border-b-[0.5px] border-lightgray pb-2 text-darkgray hover:text-primary transition-all duration-300"
+              className="text-sm md:text-md font-semibold border-b-[0.5px] border-lightgray pb-2 text-darkgray hover:text-primary transition-all duration-300"
             >
               {item}
             </Link>
