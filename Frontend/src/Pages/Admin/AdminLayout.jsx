@@ -1,6 +1,8 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink } from "react-router-dom";
 import { icons } from "../../assets/assets.js";
+import { useAppContext } from "../../context/AppContext.jsx";
 const AdminLayout = () => {
+  const { setIsAdmin } = useAppContext();
   const sidebarLinks = [
     { name: "Dashboard", path: "/", icon: icons.LuLayoutDashboard },
     { name: "Add Product", path: "/admin", icon: icons.AiOutlineProduct },
