@@ -1,10 +1,5 @@
 import Navbar from "./components/Navbar.jsx";
-import Cart from "./components/Cart.jsx";
-import Home from "./Pages/Home.jsx";
-import Products from "./Pages/Products.jsx";
-import Adminlogin from "./components/admin/Adminlogin.jsx";
-import { Route, Routes, useLocation } from "react-router-dom";
-import AdminLayout from "./Pages/Admin/AdminLayout.jsx";
+import { Route, Routes, useLocation } from 'react-router-dom';
 const App = () => {
   const location = useLocation();
 
