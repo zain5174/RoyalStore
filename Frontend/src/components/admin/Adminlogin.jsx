@@ -25,7 +25,7 @@ const Adminlogin = () => {
         onSubmit={onSubmitHandler}
         className="bg-gray-100 #5D3FD3 min-h-screen flex flex-cols m-auto"
       >
-        <div className="bg-white m-auto w-[80%] p-10">
+        <div className="bg-white m-auto w-[80%] md:w-[30%] p-10">
           <p className="text-primary font-bold text-2xl mb-5 text-center">
             Admin <span className="text-secondary">Login</span>
           </p>
