@@ -2,7 +2,7 @@
 
 
 @theme{
-  --color-secondary:#5D3FD3;
+  --color-secondary: #5d00d3;
   --color-primary: #000114;
   --color-tx-darkgray: #424242;
   --color-tx-lightgray: #b4b4b4;
@@ -19,4 +19,8 @@
       transform: translateX(-100%);
     }
   }
+}
+
+.no-scrollbar::-webkit-scrollbar{
+  display: none;
 }
